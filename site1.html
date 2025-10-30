@@ -1,0 +1,622 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SYPDERS REALM — Own Your Streetwear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SYPDERS REALM — Crop Tees, Baggy Jeans, Hoodies, Shirts. Ghana's Creative Streetwear. Fast Delivery." />
+  <style>
+    :root {
+      --bg: #111;
+      --card: #191b20;
+      --text: #fff;
+      --text-dark: #e0e7ef;
+      --accent: #0097A7;
+      --accent2: #00c7e2;
+      --btn: #0097A7;
+      --btn-hover: #027b8c;
+      --font-bold: 800;
+      --radius: 20px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.13);
+      font-family: 'Segoe UI', Inter, Arial, sans-serif;
+    }
+    * { box-sizing: border-box }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      font-size: 1.08rem;
+      font-family: inherit;
+    }
+    header {
+      background: var(--bg);
+      padding: 0;
+      border-bottom: 1.5px solid var(--accent2);
+      width: 100%;
+    }
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0 18px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      font-size: 1.7em;
+      font-weight: var(--font-bold);
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 0 2px 6px #0097a72d;
+    }
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.4em;
+      border: 2px solid var(--accent2);
+      box-shadow: 0 6px 20px rgba(0,151,167,0.09);
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.08em;
+      margin-left: 32px;
+      transition: color 0.19s;
+      position: relative;
+      padding: 6px 0;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+      margin-top: 2px;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--accent2);
+    }
+    nav a:hover::after, nav a:focus::after {
+      opacity: 1;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+      width: 100%;
+    }
+    .hero {
+      text-align: left;
+      padding-top: 38px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      align-items: end;
+    }
+    .hero-title {
+      font-size: 2.65em;
+      font-weight: var(--font-bold);
+      color: var(--accent2);
+      margin: 0 0 16px 0;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      word-break: break-word;
+      text-shadow: 0 2px 12px #00506620;
+    }
+    .hero-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-image {
+      width: 95%;
+      max-width: 420px;
+      height: auto;
+      background: #fff;
+      padding: 36px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 151, 167, 0.09);
+      border: 2.5px solid var(--accent2);
+      display: block;
+      margin: 0 auto;
+    }
+    .shop-btn {
+      display: inline-block;
+      background: var(--btn);
+      color: #fff;
+      font-size: 1.18em;
+      font-weight: 700;
+      padding: 16px 42px;
+      border-radius: 14px;
+      margin: 32px 0 0 0;
+      text-decoration: none;
+      border: none;
+      box-shadow: var(--shadow);
+      transition: background 0.19s;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      width: fit-content;
+    }
+    .shop-btn:hover {
+      background: var(--btn-hover);
+    }
+    .hero-icons {
+      display: flex;
+      gap: 48px;
+      margin-top: 38px;
+      font-size: 1em;
+      justify-content: left;
+      flex-wrap: wrap;
+    }
+    .hero-icons div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent2);
+      font-weight: 600;
+      flex: 1 1 140px;
+      min-width: 110px;
+    }
+    .hero-icons svg {
+      width: 21px;
+      height: 21px;
+      fill: var(--accent2);
+      flex-shrink: 0;
+    }
+    .products-section {
+      margin-top: 60px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 38px 0 26px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .products-title {
+      font-size: 2em;
+      font-weight: var(--font-bold);
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 38px;
+      letter-spacing: 0.02em;
+    }
+    .products-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 34px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,151,167,0.12);
+      padding: 22px 10px 24px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+      color: #000;
+    }
+    .product-card img {
+      max-width: 240px;
+      max-height: 260px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: #fff;
+      border: 2px solid var(--accent);
+      object-fit: contain;
+      box-shadow: 0 0 18px rgba(0,151,167,0.10);
+      transition: transform 0.18s;
+    }
+    .product-card img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 32px rgba(0,151,167,0.17);
+    }
+    .product-card h3 {
+      font-size: 1.35em;
+      color: var(--accent);
+      font-weight: var(--font-bold);
+      margin: 0 0 8px 0;
+      letter-spacing: 0.01em;
+      word-break: break-word;
+    }
+    .product-card p {
+      color: #03586a;
+      font-size: 1.05em;
+      margin-bottom: 18px;
+      font-weight: 500;
+      word-break: break-word;
+    }
+    /* Order Form Styling */
+    .order-form {
+      background: var(--card);
+      color: var(--text-dark);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 24px rgba(0,151,167,0.12);
+      padding: 22px;
+      max-width: 440px;
+      margin: 0 auto 24px auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .order-form label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: block;
+      color: var(--accent2);
+    }
+    .order-form select,
+    .order-form input,
+    .order-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #1c2e37;
+      font-size: 1rem;
+      background: #fff;
+      color: #000;
+      box-sizing: border-box;
+    }
+    .order-form select:focus,
+    .order-form input:focus,
+    .order-form textarea:focus {
+      border-color: var(--accent2);
+      outline: none;
+    }
+    .order-form .btn {
+      width: 100%;
+      margin-top: 10px;
+      background: var(--btn);
+      color: #fff;
+      padding: 12px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.12em;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,151,167,0.09);
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .order-form .btn:hover {
+      background: var(--btn-hover);
+    }
+    .order-success {
+      background: #e0f7fa;
+      color: #156a73;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      text-align: center;
+      border: 1px solid var(--accent);
+      font-weight: 600;
+      display: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    footer {
+      padding: 30px 0;
+      margin-top: 28px;
+      color: var(--accent2);
+      background: var(--card);
+      border-top: 2px solid var(--accent);
+      text-align: center;
+      font-size: 1rem;
+      width: 100%;
+    }
+    @media (max-width: 1200px) {
+      .products-list { grid-template-columns: repeat(3, 1fr);}
+      .product-card img { max-width: 180px; max-height: 200px;}
+    }
+    @media (max-width: 900px) {
+      .products-list { grid-template-columns: repeat(2, 1fr);}
+      .hero-image { max-width: 200px;}
+      .product-card img { max-width: 140px; max-height: 160px;}
+    }
+    @media (max-width: 700px) {
+      .nav {padding: 18px 0 12px;}
+      main {padding: 0 2vw;}
+      .hero-icons {gap: 22px; font-size: 0.98em;}
+      .products-title {font-size: 1.3em;}
+      .products-section {padding: 18px 0;}
+      .products-list {grid-template-columns: 1fr;}
+      .product-card {padding: 18px 10px;}
+      .order-form {padding: 10px;}
+      .hero-title {font-size: 2em;}
+      .shop-btn {padding: 10px 22px; font-size: 1em;}
+      .hero-image { max-width: 160px;}
+      .product-card img { max-width: 110px; max-height: 120px;}
+    }
+    @media (max-width: 500px) {
+      .nav {flex-direction: column;align-items: flex-start;}
+      nav {width: 100%;justify-content: flex-start;}
+      nav a {margin-left: 0;margin-right: 16px;}
+      .brand {font-size: 1.2em;}
+      .hero-title {font-size: 1.2em;}
+      .shop-btn {font-size: 0.95em;padding:8px 16px;}
+      .hero-icons {gap: 10px;flex-wrap:wrap;}
+      .products-section {padding: 10px 2vw;}
+      .product-card {padding: 8px 4px;}
+      .hero-image { max-width: 120px;}
+      .product-card img { max-width: 90px; max-height: 100px;}
+    }
+  </style>
+  <script>
+    function handleOrderForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      if (!form.name.value.trim() || !form.phone.value.trim() || !form.product.value || !form.size.value || !form.quantity.value || !form.delivery.value) {
+        alert("Please fill out all required fields.");
+        return;
+      }
+      // Compose WhatsApp message with the order details
+      var msg =
+        "SYPDERS REALM Order:%0A" +
+        "Name: " + encodeURIComponent(form.name.value) + "%0A" +
+        "Phone: " + encodeURIComponent(form.phone.value) + "%0A" +
+        "Product: " + encodeURIComponent(form.product.value) + "%0A" +
+        "Size: " + encodeURIComponent(form.size.value) + "%0A" +
+        "Quantity: " + encodeURIComponent(form.quantity.value) + "%0A" +
+        "Delivery: " + encodeURIComponent(form.delivery.value) + "%0A" +
+        "Address: " + encodeURIComponent(form.address.value) + "%0A" +
+        "Notes: " + encodeURIComponent(form.note.value);
+      // WhatsApp link (replace number if needed)
+      var waUrl = "https://wa.link/bbfygm?text=" + msg;
+      window.open(waUrl, "_blank");
+      document.getElementById('order-success').style.display = 'block';
+      form.reset();
+      setTimeout(() => {
+        document.getElementById('order-success').style.display = 'none';
+      }, 6000);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <span class="brand">
+        <span class="logo">SR</span>
+        SYPDERS REALM
+      </span>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Shop</a>
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <h1 class="hero-title">WELCOME TO SYPDERS REALM</h1>
+        <p style="margin-bottom:20px;">
+          Step into your style zone — where fashion meets attitude.<br>
+          At SYPDERS REALM, we redefine streetwear for the bold, the creative, and the confident.<br>
+          From baggy jeans to crop tees, hoodies, and graphic shirts, every piece is made to help you express your unique vibe.
+        </p>
+        <a class="shop-btn" href="#products">SHOP NOW</a>
+        <div class="hero-icons">
+          <div>
+            <span style="font-size:1.1em;">&#10003;</span>
+            Bold & Creative
+          </div>
+          <div>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="var(--accent2)" stroke-width="3" fill="none"/><circle cx="12" cy="12" r="3" fill="var(--accent2)"/></svg>
+            Premium Streetwear
+          </div>
+          <div>
+            <svg viewBox="0 0 24 24"><path d="M3 6v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6H3zm2 0h14v2H5V6zm0 4h14v8H5v-8z" fill="var(--accent2)"></path></svg>
+            Fast Nationwide Delivery
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <!-- Home image (image 9) -->
+        <img src="Images/logo.jpg" alt="SYPDERS REALM Spider Logo" class="hero-image"/>
+      </div>
+    </section>
+    <!-- PRODUCTS -->
+    <section class="products-section" id="products">
+      <div class="products-title">SHOP</div>
+      <div class="products-list">
+        <div class="product-card">
+          <img src="Images/hoodie2.jpg" alt="Hoodie" />
+          <h3>SPYDERS Hoodie PRIME</h3>
+          <p>Premium hoodie </p>
+        </div>
+        <div class="product-card">
+          <img src="Images/top1.jpg" alt="Web T-shirt" />
+          <h3>SPYDERS T-shirt (Web Edition)</h3>
+          <p>Graphic T-shirts with web and art</p>
+        </div>
+        <div class="product-card">
+          <img src="Images/jeans1.jpg" alt="Baggy Jeans" />
+          <h3>SPYDERS Baggy Jeans SIMP ART</h3>
+          <p>Baggy Jeans </p>
+        </div>
+        <div class="product-card">
+          <img src="Images/top5.png" alt="Crop T-shirt" />
+          <h3>SPYDERS Crop T-shirt</h3>
+          <p>Crop T-shirt for men and women</p>
+        </div>
+        <div class="product-card">
+          <img src="Images/top2.jpg" alt="SPYDERS T-shirt 2" />
+          <h3>SPYDERS T-shirt 2</h3>
+          <p>Classic Tee for any style</p>
+        </div>
+        <div class="product-card">
+          <img src="Images/jeans2.jpg" alt="SPYDERS T-shirt 3" />
+          <h3>SPYDERS JOGGY 2 LENS</h3>
+          <p>Standout streetwear BAGGY</p>
+        </div>
+        <div class="product-card">
+          <img src="Images/top4.jpg" alt="SPYDERS Cap" />
+          <h3>SPYDERS  BLUR WEB</h3>
+          <p>Street-ready Crop</p>
+        </div>
+        <div class="product-card">
+          <img src="Images/top3.jpg" alt="SPYDERS Bag" />
+          <h3>SPYDERS CROP 3 CLASSIC</h3>
+          <p>Practical, stylish, and bold</p>
+        </div>
+      </div>
+    </section>
+    <!-- ORDER FORM (UNIVERSAL) -->
+    <section id="delivery" style="margin-top:38px;">
+      <div class="order-form">
+        <h2 style="color:var(--accent2);margin-top:0;">Order Any SYPDERS REALM Product</h2>
+        <div id="order-success" class="order-success">Order submitted! You'll be redirected to WhatsApp to complete your order.</div>
+        <form onsubmit="handleOrderForm(event)">
+          <label for="name">Name*</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="phone">Phone Number*</label>
+          <input type="tel" id="phone" name="phone" pattern="[\d\s+]+" required />
+
+          <label for="product">Product*</label>
+          <select id="product" name="product" required>
+            <option value="">Select product</option>
+            <option>SPYDERS Hoodie</option>
+            <option>SPYDERS T-shirt (Web Edition)</option>
+            <option>SPYDERS Baggy Jeans</option>
+            <option>SPYDERS Crop T-shirt</option>
+            <option>SPYDERS T-shirt 2</option>
+            <option>SPYDERS T-shirt 3</option>
+            <option>SPYDERS Cap</option>
+            <option>SPYDERS Bag</option>
+          </select>
+
+          <label for="size">Preferred Size*</label>
+          <select id="size" name="size" required>
+            <option value="">Select size</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>Xtra-Large</option>
+            <option>Xtra-Xtra Large</option>
+          </select>
+
+          <label for="quantity">Quantity*</label>
+          <input type="number" id="quantity" name="quantity" min="1" max="10" required />
+
+          <label for="delivery-method">Delivery Method*</label>
+          <select id="delivery-method" name="delivery" required>
+            <option value="">Choose delivery method</option>
+            <option value="Home Delivery">Home Delivery</option>
+            <option value="Pickup">Pickup</option>
+          </select>
+
+          <label for="address">Address (if delivery selected)</label>
+          <textarea id="address" name="address" rows="2"></textarea>
+
+          <label for="note">Order Notes (optional)</label>
+          <textarea id="note" name="note" rows="2"></textarea>
+
+          <button class="btn" type="submit">Send Order via WhatsApp</button>
+        </form>
+      </div>
+    </section>
+    <!-- COLLECTIONS -->
+    <section class="products-section" id="collections" style="margin-top:40px;">
+      <div class="products-title">OUR COLLECTIONS</div>
+      <div class="products-list">
+        <div class="product-card">
+          <h3>🔥 FOR HIM</h3>
+          <ul>
+            <li><b>Graphic Tees:</b> Street-inspired designs for everyday wear.</li>
+            <li><b>Baggy Jeans:</b> Relaxed fit, bold style — made for movement.</li>
+            <li><b>Oversized Hoodies:</b> Comfortable, trendy, and built to last.</li>
+            <li><b>Casual Shirts:</b> Minimal, modern, and effortlessly cool.</li>
+          </ul>
+        </div>
+        <div class="product-card">
+          <h3>💋 FOR HER</h3>
+          <ul>
+            <li><b>Crop T-Shirts:</b> Sleek, bold, and confidence-boosting.</li>
+            <li><b>Baggy Jeans & Cargo Pants:</b> Comfort meets attitude.</li>
+            <li><b>Hoodies & Pullovers:</b> Cozy streetwear with feminine edge.</li>
+            <li><b>Classic Tops & Street Shirts:</b> Mix and match your daily vibe.</li>
+          </ul>
+        </div>
+        <div class="product-card">
+          <h3>🧢 ACCESSORIES</h3>
+          <ul>
+            <li><b>Hats, Beanies & Caps:</b> Complete your outfit with attitude.</li>
+            <li><b>Tote Bags & Street Packs:</b> Style meets practicality.</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:2rem;color:var(--accent)">🕷️ Every outfit in the Realm is made with premium fabric, bold design, and the perfect fit for every personality.</p>
+    </section>
+    <!-- ABOUT -->
+    <section class="products-section" id="about" style="margin-top:40px;">
+      <div class="products-title">ABOUT US</div>
+      <div style="max-width:700px;margin:0 auto;color:#fff;">
+        <h2 style="color:var(--accent2);margin-bottom:6px;">Our Story</h2>
+        <p>Born from the streets, built for style — SYPDERS REALM is a Ghanaian-based fashion brand that celebrates individuality and self-expression through clothing. We design for those who don’t just follow trends — they create them.</p>
+        <h2 style="color:var(--accent2);margin-bottom:6px;">Our Mission</h2>
+        <p>To empower men and women with bold, comfortable, and creative clothing that reflects who they are — fearless, stylish, and original.</p>
+        <h2 style="color:var(--accent2);margin-bottom:6px;">Our Vision</h2>
+        <p>To become the leading streetwear brand known for creativity, comfort, and quality across Africa and beyond.</p>
+        <h2 style="color:var(--accent2);margin-bottom:6px;">Our Values</h2>
+        <ul>
+          <li>🕸️ <b>Authenticity</b> – Stay true, stay real.</li>
+          <li>🕸️ <b>Creativity</b> – Every piece tells a story.</li>
+          <li>🕸️ <b>Confidence</b> – Wear your power.</li>
+          <li>🕸️ <b>Quality</b> – Streetwear that lasts.</li>
+        </ul>
+      </div>
+    </section>
+    <!-- CONTACT -->
+    <section class="products-section" id="contact" style="margin-top:40px;">
+      <div class="products-title" style="margin-bottom:22px;">Contact Us</div>
+      <div style="max-width:600px;margin:0 auto;">
+        <p style="margin:6px 0"><strong>Email:</strong> verifiedloner218@gmail.com</p>
+        <p style="margin:6px 0"><strong>Phone:</strong> +233 20 132 1499</p>
+        <p style="margin:6px 0"><strong>Location:</strong> Accra, Ghana</p>
+        <p style="font-size:13px;color:var(--accent2);">Follow <span style="font-weight:700">@SpydersRealm</span> on Instagram, Facebook, TikTok and Twitter/X.</p>
+        <form style="margin-top:22px;">
+          <input type="text" placeholder="Your name" required style="margin-bottom:8px;width:100%;padding:10px;border-radius:8px;border:1px solid #1c2e37;font-size:1rem;background:#fff;color:#000;box-sizing:border-box;">
+          <input type="tel" placeholder="Your phone number" required style="margin-bottom:8px;width:100%;padding:10px;border-radius:8px;border:1px solid #1c2e37;font-size:1rem;background:#fff;color:#000;box-sizing:border-box;">
+          <textarea rows="4" placeholder="Message" required style="margin-bottom:8px;width:100%;padding:10px;border-radius:8px;border:1px solid #1c2e37;font-size:1rem;background:#fff;color:#000;box-sizing:border-box;"></textarea>
+          <a class="btn btn-primary" href="https://wa.link/bbfygm" style="width:100%;display:inline-block;text-align:center;">Send Message via WhatsApp</a>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div>
+      &copy; 2025 SYPDERS REALM. Proudly made in Ghana &mdash; All rights reserved.<br>
+      <span style="font-size:13px;color:var(--accent2);">Designed with style, attitude, and confidence.</span>
+    </div>
+  </footer>
+</body>
+</html>
